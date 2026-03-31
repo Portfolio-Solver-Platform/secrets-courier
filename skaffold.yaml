@@ -1,0 +1,28 @@
+apiVersion: skaffold/v4beta13
+kind: Config
+metadata:
+  name: secrets-delivery-skaffold
+
+profiles:
+  - name: dev
+    activation:
+      - command: dev
+    deploy:
+      helm:
+        releases:
+          - name: secrets-delivery
+            chartPath: helm/
+            namespace: secrets-delivery
+            valuesFiles:
+              - helm/values-dev.yaml
+
+  - name: prod
+    deploy:
+      helm:
+        releases:
+          - name: secrets-delivery
+            chartPath: helm/
+            namespace: secrets-delivery
+            wait: true
+            upgradeOnChange: true
+
