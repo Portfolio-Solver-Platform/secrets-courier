@@ -1,7 +1,7 @@
 apiVersion: skaffold/v4beta13
 kind: Config
 metadata:
-  name: secrets-delivery-skaffold
+  name: secrets-courier-skaffold
 
 profiles:
   - name: dev
@@ -10,9 +10,9 @@ profiles:
     deploy:
       helm:
         releases:
-          - name: secrets-delivery
+          - name: secrets-courier
             chartPath: helm/
-            namespace: secrets-delivery
+            namespace: secrets-courier
             valuesFiles:
               - helm/values-dev.yaml
 
@@ -20,9 +20,9 @@ profiles:
     deploy:
       helm:
         releases:
-          - name: secrets-delivery
+          - name: secrets-courier
             chartPath: helm/
-            namespace: secrets-delivery
+            namespace: secrets-courier
             wait: true
             upgradeOnChange: true
 
