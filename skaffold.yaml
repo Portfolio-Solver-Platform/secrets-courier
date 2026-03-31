@@ -13,8 +13,6 @@ profiles:
           - name: secrets-courier
             chartPath: helm/
             namespace: secrets-courier
-            valuesFiles:
-              - helm/values-dev.yaml
 
   - name: prod
     deploy:
